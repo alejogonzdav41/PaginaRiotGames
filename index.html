@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111113">
+  <meta name="description" content="Desbloquea las letras de RIOT superando cuatro desafíos interactivos.">
+  <title>RIOT: Unlock the Logo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Cinzel:wght@600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#home" aria-label="Volver al inicio"><span class="wordmark-mark">R</span><span>RIOT <i>UNLOCK THE LOGO</i></span></a>
+      <div class="top-meta"><span class="live-dot"></span> EXPERIENCIA INTERACTIVA <span class="meta-divider">/</span> UNIDAD 07</div>
+      <button id="reset-button" class="reset-button" type="button" title="Reiniciar progreso" hidden><span aria-hidden="true">↺</span> Reiniciar</button>
+    </header>
+
+    <main>
+      <section id="home-view" class="home-view">
+        <div class="home-copy">
+          <p class="eyebrow"><span>01</span> EL LOGO SE CONQUISTA JUGANDO</p>
+          <h1>CUATRO JUEGOS.<br><span>UNA SOLA</span> LEYENDA.</h1>
+          <p class="intro">Supera cada desafío. Gana cada letra.<br>El logo todavía no es tuyo.</p>
+        </div>
+        <div class="logo-stage" aria-label="Progreso del logo RIOT">
+          <div class="logo-bracket bracket-left"></div><div class="logo-bracket bracket-right"></div>
+          <p class="stage-label">ESTADO DE CONQUISTA <span id="progress-count">00 / 04</span></p>
+          <div id="logo-letters" class="logo-letters"></div>
+          <div class="stage-rule"><span></span><b id="progress-caption">CUATRO RETOS · CUATRO LETRAS</b><span></span></div>
+        </div>
+        <div class="selection-head"><span>ELIGE TU PRIMER DESAFÍO</span><span class="mono">ORDEN LIBRE <b>↘</b></span></div>
+        <div id="level-grid" class="level-grid"></div>
+        <footer class="home-footer"><span>UNA EXPERIENCIA DE PROGRAMACIÓN CREATIVA</span><span>MOVERSE · APUNTAR · ELEGIR · LUCHAR</span></footer>
+      </section>
+
+      <section id="game-view" class="game-view" hidden>
+        <div class="game-topline">
+          <button id="back-button" class="back-button" type="button"><span aria-hidden="true">←</span> VOLVER AL MAPA</button>
+          <div class="game-heading"><span id="game-index" class="game-index">01</span><div><h2 id="game-title">LEAGUE OF LEGENDS</h2><p id="game-subtitle">ENCUENTRA LA PARTIDA</p></div></div>
+          <div class="game-progress"><span>LETRAS</span><b id="game-progress-count">00 / 04</b></div>
+        </div>
+        <div id="game-scene" class="game-scene" data-game="lol">
+          <canvas id="scene-canvas" aria-label="Escena interactiva del desafío"></canvas>
+          <div class="scene-vignette" aria-hidden="true"></div>
+          <div id="scene-ui" class="scene-ui"></div>
+        </div>
+        <div class="game-footline"><span id="game-instruction">Busca una partida y acepta para continuar.</span><span class="mono">PROGRESO GUARDADO AUTOMÁTICAMENTE</span></div>
+      </section>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div id="completion-overlay" class="completion-overlay" hidden role="dialog" aria-modal="true" aria-label="Pruebas superadas">
+        <div class="completion-content"><span class="complete-kicker">TODAS LAS PRUEBAS SUPERADAS</span><img class="complete-logo" src="RiotGamesLogo.png" alt="Logo de Riot Games"><div class="completion-actions"><button id="complete-return" class="action-button" type="button">VOLVER A JUGAR</button><button id="complete-reset" class="quiet-button" type="button">REINICIAR TODO</button></div></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
